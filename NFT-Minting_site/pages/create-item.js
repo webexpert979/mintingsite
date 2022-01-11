@@ -15,7 +15,27 @@ import Market from '../artifacts/contracts/Market.sol/NFTMarket.json'
 
 export default function CreateItem() {
   const [fileUrl, setFileUrl] = useState(null)
-  const [formInput, updateFormInput] = useState({ price: '', name: '', description: '' })
+  const [formInput, updateFormInput] = useState({ price: '', name: '', description: '',
+  strength: '',
+  constitution: '',
+  endurance: '',
+  reflex: '',
+  dexterity: '',
+  fortitude: '',
+  athletics: '',
+  intelligence: '',
+  wisdom: '',
+  charisma: '',
+  sleight_of_hand: '',
+  stealth: '',
+  survival: '',
+  willpower: '',
+  deception: '',
+  perception: '',
+  persuasion: '',
+  charisma2: '',
+  intimidation: '',
+  medicine: '' })
   const router = useRouter()
 
   async function onChange(e) {
@@ -51,7 +71,7 @@ export default function CreateItem() {
 	  deception,
 	  perception,
 	  persuasion,
-	  charisma,
+	  charisma2,
 	  intimidation,
 	  medicine} = formInput
     if (!name || !description || !price || !fileUrl) return
@@ -73,7 +93,7 @@ export default function CreateItem() {
 	  deception,
 	  perception,
 	  persuasion,
-	  charisma,
+	  charisma2,
 	  intimidation,
 	  medicine
     })
@@ -107,26 +127,8 @@ export default function CreateItem() {
     contract = new ethers.Contract(nftmarketaddress, Market.abi, signer)
     let listingPrice = await contract.getListingPrice()
     listingPrice = listingPrice.toString()
-
-    transaction = await contract.createMarketItem(nftaddress, tokenId, price, strength, constitution,
-	  endurance,
-	  reflex,
-	  dexterity,
-	  fortitude,
-	  athletics,
-	  intelligence,
-	  wisdom,
-	  charisma,
-	  sleight_of_hand,
-	  stealth,
-	  survival,
-	  willpower,
-	  deception,
-	  perception,
-	  persuasion,
-	  charisma,
-	  intimidation,
-	  medicine{ value: listingPrice })
+    
+    transaction = await contract.createMarketItem(nftaddress, tokenId, price, { value: listingPrice })
     await transaction.wait()
     router.push('/')
   }
@@ -235,7 +237,7 @@ export default function CreateItem() {
 		<input
           placeholder="Asset charisma"
           className="mt-2 border rounded p-4"
-          onChange={e => updateFormInput({ ...formInput, Charisma: e.target.value })}
+          onChange={e => updateFormInput({ ...formInput, charisma2: e.target.value })}
         />
 		<input
           placeholder="Asset intimidation"
