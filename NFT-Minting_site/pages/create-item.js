@@ -214,6 +214,11 @@ export default function CreateItem() {
           onChange={e => updateFormInput({ ...formInput, stealth: e.target.value })}
         />
 		<input
+          placeholder="Asset Survival"
+          className="mt-2 border rounded p-4"
+          onChange={e => updateFormInput({ ...formInput, survival: e.target.value })}
+        />
+    <input
           placeholder="Asset willpower"
           className="mt-2 border rounded p-4"
           onChange={e => updateFormInput({ ...formInput, willpower: e.target.value })}
