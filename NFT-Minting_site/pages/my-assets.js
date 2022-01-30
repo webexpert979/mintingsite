@@ -74,32 +74,33 @@ export default function MyAssets() {
           {
             nfts.map((nft, i) => (
               <div key={i} className="border shadow rounded-xl overflow-hidden">
-                <img src={nft.image} className="rounded" />
+                <img src={nft.image} className="rounded" alt="rpg" />
                 <div className="p-4 bg-black">
-                  <p className="text-2xl font-bold text-white">Price - {nft.price} Eth</p>
+                  {/*<p className="text-2xl font-bold text-white">Price - {nft.price} Eth</p>*/}
                   <h3>Body</h3>
-				  <p className="text-2xl font-bold text-white">strength {nft.strength} </p>
-				  <p className="text-2xl font-bold text-white">constitution {nft.constitution} </p>
-				  <p className="text-2xl font-bold text-white">endurance {nft.endurance} </p>
-                  <p className="text-2xl font-bold text-white">reflex {nft.reflex} </p>
-				  <p className="text-2xl font-bold text-white">dexterity {nft.dexterity} </p>
-				  <p className="text-2xl font-bold text-white">fortitude {nft.fortitude} </p>
-				  <p className="text-2xl font-bold text-white">athletics {nft.athletics} </p>
+				  <p className="text-s mb-4 font-bold text-white border-2 p-2">strength <span className="float-right">{nft.strength} </span></p>
+				  <p className="text-s mb-4 font-bold text-white border-2 p-2">constitution <span className="float-right">{nft.constitution} </span></p>
+				  <p className="text-s mb-4 font-bold text-white border-2 p-2">endurance <span className="float-right">{nft.endurance} </span></p>
+          <p className="text-s mb-4 font-bold text-white border-2 p-2">reflex <span className="float-right">{nft.reflex} </span></p>
+				  <p className="text-s mb-4 font-bold text-white border-2 p-2">dexterity <span className="float-right">{nft.dexterity} </span></p>
+				  <p className="text-s mb-4 font-bold text-white border-2 p-2">fortitude <span className="float-right">{nft.fortitude} </span></p>
+				  <p className="text-s mb-4 font-bold text-white border-2 p-2">athletics <span className="float-right">{nft.athletics} </span></p>
 				  <h3>Mind</h3>
-				  <p className="text-2xl font-bold text-white">intelligence {nft.intelligence} </p>
-				  <p className="text-2xl font-bold text-white">wisdom {nft.wisdom} </p>
-				  <p className="text-2xl font-bold text-white">charisma {nft.charisma} </p>
-                  <p className="text-2xl font-bold text-white">sleight_of_hand {nft.sleight_of_hand} </p>
-				  <p className="text-2xl font-bold text-white">stealth {nft.stealth} </p>
-				  <p className="text-2xl font-bold text-white">survival {nft.survival} </p>
-				  <p className="text-2xl font-bold text-white">willpower {nft.willpower} </p>
+				  <p className="text-s mb-4 font-bold text-white border-2 p-2">intelligence <span className="float-right">{nft.intelligence} </span></p>
+				  <p className="text-s mb-4 font-bold text-white border-2 p-2">wisdom <span className="float-right">{nft.wisdom} </span></p>
+				  <p className="text-s mb-4 font-bold text-white border-2 p-2">charisma <span className="float-right">{nft.charisma} </span></p>
+          <p className="text-s mb-4 font-bold text-white border-2 p-2">sleight of hand <span className="float-right">{nft.sleight_of_hand} </span></p>
+				  <p className="text-s mb-4 font-bold text-white border-2 p-2">stealth <span className="float-right">{nft.stealth} </span></p>
+				  <p className="text-s mb-4 font-bold text-white border-2 p-2">survival <span className="float-right">{nft.survival} </span></p>
+				  <p className="text-s mb-4 font-bold text-white border-2 p-2">willpower <span className="float-right">{nft.willpower} </span></p>
 				  <h3>Soul</h3>
-				  <p className="text-2xl font-bold text-white"> deception{nft.deception} </p>
-				  <p className="text-2xl font-bold text-white">perception {nft.perception} </p>
-				  <p className="text-2xl font-bold text-white">persuasion {nft.persuasion} </p>
-                  <p className="text-2xl font-bold text-white">charisma {nft.charisma} </p>
-				  <p className="text-2xl font-bold text-white">intimidation {nft.intimidation} </p>
-				  <p className="text-2xl font-bold text-white">medicine {nft.medicine} </p>
+				  <p className="text-s mb-4 font-bold text-white border-2 p-2">deception<span className="float-right">{nft.deception} </span></p>
+				  <p className="text-s mb-4 font-bold text-white border-2 p-2">perception <span className="float-right">{nft.perception} </span></p>
+				  <p className="text-s mb-4 font-bold text-white border-2 p-2">persuasion <span className="float-right">{nft.persuasion} </span></p>
+          <p className="text-s mb-4 font-bold text-white border-2 p-2">charisma <span className="float-right">{nft.charisma2} </span></p>
+				  <p className="text-s mb-4 font-bold text-white border-2 p-2">intimidation <span className="float-right">{nft.intimidation} </span></p>
+				  <p className="text-s mb-4 font-bold text-white border-2 p-2">medicine <span className="float-right">{nft.medicine} </span></p>
+				 
 				</div>
               </div>
             ))

@@ -88,7 +88,7 @@ export default function Home() {
           {
             nfts.map((nft, i) => (
               <div key={i} className="border shadow rounded-xl overflow-hidden">
-                <img src={nft.image} />
+                <img src={nft.image} alt="rpg" />
                 <div className="p-4">
                   <p style={{ height: '64px' }} className="text-s font-semibold">{nft.name}</p>
                   <div style={{ height: '70px', overflow: 'hidden' }}>
@@ -96,7 +96,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="p-4 bg-black">
-                  <p className="text-s mb-4 font-bold text-white border-2 p-2">ETH <span className="float-right">{nft.price} </span></p>
+                  {/*<p className="text-s mb-4 font-bold text-white border-2 p-2">ETH <span className="float-right">{nft.price} </span></p>*/}
 				  <h3>Body</h3>
 				  <p className="text-s mb-4 font-bold text-white border-2 p-2">strength <span className="float-right">{nft.strength} </span></p>
 				  <p className="text-s mb-4 font-bold text-white border-2 p-2">constitution <span className="float-right">{nft.constitution} </span></p>
@@ -120,7 +120,7 @@ export default function Home() {
           <p className="text-s mb-4 font-bold text-white border-2 p-2">charisma <span className="float-right">{nft.charisma2} </span></p>
 				  <p className="text-s mb-4 font-bold text-white border-2 p-2">intimidation <span className="float-right">{nft.intimidation} </span></p>
 				  <p className="text-s mb-4 font-bold text-white border-2 p-2">medicine <span className="float-right">{nft.medicine} </span></p>
-				  <button className="w-full bg-pink-500 text-white font-bold py-2 px-12 rounded" onClick={() => buyNft(nft)}>Buy</button>
+				  {/*<button className="w-full bg-pink-500 text-white font-bold py-2 px-12 rounded" onClick={() => buyNft(nft)}>Buy</button>*/}
                 </div>
               </div>
             ))

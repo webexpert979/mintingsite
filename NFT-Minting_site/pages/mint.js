@@ -2,6 +2,8 @@ import { ethers } from 'ethers'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Web3Modal from "web3modal"
+import Image from "next/image"
+import dice from "../public/dice.gif"
 
 import {
   nftaddress, nftmarketaddress
@@ -80,15 +82,33 @@ export default function Home() {
     await transaction.wait()
     loadNFTs()
   }
+  function roll() {
+    document.getElementById('rollimage').style.display = "block";
+    document.getElementById('rollbtn').style.display = "none";
+
+  }
+  function shownft(){
+    document.getElementById('shownft').style.display = "block";
+    document.getElementById('rollimage').style.display = "none";
+  }
   if (loadingState === 'loaded' && !nfts.length) return (<h1 className="px-20 py-10 text-3xl">No items in marketplace</h1>)
   return (
+    
     <div className="flex justify-center">
+      <div id="rollbtn">
+      <button className="w-full bg-pink-500 text-white font-bold py-2 px-12 rounded" onClick={() => roll()}>Roll</button>
+      </div>
+      
+      <div id="rollimage" className='hidden'>
+        <Image src={dice} width={"100%"} height={"100%"} alt="rpg" />
+        <button className="w-full bg-pink-500 text-white font-bold py-2 px-12 rounded" onClick={() => shownft()}>show RPG NFT with stats</button>
+      </div>
       <div className="px-4" style={{ maxWidth: '1600px' }}>
         <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 gap-4 pt-4">
           {
             nfts.map((nft, i) => (
-              <div className='border rounded-xl shadow'><img src={nft.image} className='float-left' />
-              <div key={i} className="overflow-hidden flex">
+              <div key={i} id="shownft" className='border rounded-xl shadow p-4 hidden'><img src={nft.image} className='float-left' alt="rpg" />
+              <div className="overflow-hidden flex">
                 
                 <div className="p-4">
                   <p style={{ height: '64px' }} className="text-s font-semibold">{nft.name}</p>
@@ -98,7 +118,7 @@ export default function Home() {
                 </div>
           
                 <div className="p-4 bg-black">
-                  <p className="text-s mb-4 font-bold text-white border-2 p-2">ETH <span className="float-right">{nft.price} </span></p>
+                  {/*<p className="text-s mb-4 font-bold text-white border-2 p-2">ETH <span className="float-right">{nft.price} </span></p>*/}
 				  <h3 className='text-white'>Body</h3>
 				  <p className="text-s mb-4 font-bold text-white border-2 p-2">strength <span className="float-right">{nft.strength} </span></p>
 				  <p className="text-s mb-4 font-bold text-white border-2 p-2">constitution <span className="float-right">{nft.constitution} </span></p>
@@ -122,7 +142,7 @@ export default function Home() {
           <p className="text-s mb-4 font-bold text-white border-2 p-2">charisma <span className="float-right">{nft.charisma2} </span></p>
 				  <p className="text-s mb-4 font-bold text-white border-2 p-2">intimidation <span className="float-right">{nft.intimidation} </span></p>
 				  <p className="text-s mb-4 font-bold text-white border-2 p-2">medicine <span className="float-right">{nft.medicine} </span></p>
-				  <button className="w-full bg-pink-500 text-white font-bold py-2 px-12 rounded" onClick={() => buyNft(nft)}>Buy</button>
+				  <button className="w-full bg-pink-500 text-white font-bold py-2 px-12 rounded" onClick={() => buyNft(nft)}>Mint</button>
                 </div>
               </div>
               </div>
