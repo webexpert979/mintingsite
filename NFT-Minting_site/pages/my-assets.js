@@ -4,11 +4,11 @@ import axios from 'axios'
 import Web3Modal from "web3modal"
 
 import {
-  nftmarketaddress, nftaddress
+  marketplaceAddress
 } from '../config'
 
-import Market from '../artifacts/contracts/Market.sol/NFTMarket.json'
-import NFT from '../artifacts/contracts/NFT.sol/NFT.json'
+import NFTMarketplace from '../artifacts/contracts/Market.sol/NFTMarket.json'
+
 
 export default function MyAssets() {
   const [nfts, setNfts] = useState([])
@@ -24,14 +24,13 @@ export default function MyAssets() {
     const connection = await web3Modal.connect()
     const provider = new ethers.providers.Web3Provider(connection)
     const signer = provider.getSigner()
-      
-    const marketContract = new ethers.Contract(nftmarketaddress, Market.abi, signer)
-    const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider)
-    const data = await marketContract.fetchMyNFTs()
-    
+
+    const marketplaceContract = new ethers.Contract(marketplaceAddress, NFTMarketplace.abi, signer)
+    const data = await marketplaceContract.fetchMyNFTs()
+
     const items = await Promise.all(data.map(async i => {
-      const tokenUri = await tokenContract.tokenURI(i.tokenId)
-      const meta = await axios.get(tokenUri)
+      const tokenURI = await marketplaceContract.tokenURI(i.tokenId)
+      const meta = await axios.get(tokenURI)
       let price = ethers.utils.formatUnits(i.price.toString(), 'ether')
       let item = {
         price,

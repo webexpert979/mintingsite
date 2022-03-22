@@ -4,11 +4,10 @@ import axios from 'axios'
 import Web3Modal from "web3modal"
 
 import {
-  nftaddress, nftmarketaddress
+  marketplaceAddress
 } from '../config'
 
-import NFT from '../artifacts/contracts/NFT.sol/NFT.json'
-import Market from '../artifacts/contracts/Market.sol/NFTMarket.json'
+import NFTMarketplace from '../artifacts/contracts/Market.sol/NFTMarket.json'
 
 let rpcEndpoint = null
 
@@ -24,12 +23,15 @@ export default function Home() {
   }, [])
   async function loadNFTs() {    
     const provider = new ethers.providers.JsonRpcProvider(rpcEndpoint)
-    const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider)
-    const marketContract = new ethers.Contract(nftmarketaddress, Market.abi, provider)
-    const data = await marketContract.fetchMarketItems()
-    
+    const contract = new ethers.Contract(marketplaceAddress, NFTMarketplace.abi, provider)
+    const data = await contract.fetchMarketItems()
+
+    /*
+    *  map over items returned from smart contract and format 
+    *  them as well as fetch their token metadata
+    */
     const items = await Promise.all(data.map(async i => {
-      const tokenUri = await tokenContract.tokenURI(i.tokenId)
+      const tokenUri = await contract.tokenURI(i.tokenId)
       const meta = await axios.get(tokenUri)
       let price = ethers.utils.formatUnits(i.price.toString(), 'ether')
       let item = {
