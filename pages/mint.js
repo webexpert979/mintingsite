@@ -38,7 +38,7 @@ export default function Home() {
       let price = ethers.utils.formatUnits(i.price.toString(), 'ether')
       let item = {
         price,
-        itemId: i.itemId.toNumber(),
+        tokenId: i.tokenId.toNumber(),
         seller: i.seller,
         owner: i.owner,
         image: meta.data.image,
@@ -99,6 +99,7 @@ export default function Home() {
     
     <div className="flex justify-center">
       <div id="rollbtn">
+	  <p className="bg-black p-4 text-white content-center">Click to roll start the game and mint an RPG character</p>
       <button className="w-full bg-pink-500 text-white font-bold py-2 px-12 rounded" onClick={() => roll()}>Roll</button>
       </div>
       
